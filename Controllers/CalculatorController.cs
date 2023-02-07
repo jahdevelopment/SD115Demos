@@ -1,64 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Emit;
 
 namespace SD115Demos.Controllers
 {
     public class CalculatorController : Controller
     {
-        private int _numberOne = 20;
-
-        public int NumberOne { get { return _numberOne;} }
-
-        private int _numberTwo = 10;
-
-        public int NumberTwo { get { return _numberTwo;} }
-
-        public int AddNumbers(int NumberOne, int NumberTwo)
+        public IActionResult Add(int operandOne, int operandTwo)
         {
-            int add = NumberOne + NumberTwo;
-
-            return add;
+            ViewBag.Outcome = operandOne + operandTwo;
+            return View("Result");
         }
 
-        public int SustractNumbers(int NumberOne, int NumberTwo)
+        public IActionResult Substract(int operandOne, int operandTwo)
         {
-            int sustract = NumberOne - NumberTwo;
-
-            return sustract;
+            ViewBag.Outcome = operandOne - operandTwo;
+            return View("Result");  
         }
 
-        public int MultiplyNumbers(int NumberOne, int NumberTwo)
+        public IActionResult Product(int operandOne, int operandTwo)
         {
-            int multiply = NumberOne * NumberTwo;
-
-            return multiply;
+            ViewBag.Outcome = operandOne * operandTwo;
+            return View("Result");
         }
 
-        public int DivideNumbers(int NumberOne, int NumberTwo)
+        public IActionResult Divide(int operandOne, int operandTwo) 
         {
-            int divide = NumberOne / NumberTwo;
-
-            return divide;
+            ViewBag.Outcome = operandOne / operandTwo;
+            return View("Result");
         }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-        public IActionResult Calc(int NumberOne,int NumberTwo)
-        {
-            //ViewBag.NumberOne = NumberOne;
-
-            //ViewBag.NumberTwo = NumberTwo;
-
-            ViewBag.Result1 = AddNumbers(NumberOne, NumberTwo);
-
-            ViewBag.Result2 = SustractNumbers(NumberOne, NumberTwo);
-
-            ViewBag.Result3 = MultiplyNumbers(NumberOne, NumberTwo);
-
-            ViewBag.Result4 = DivideNumbers(NumberOne, NumberTwo);
-
-            return View();
-        }
+        
     }
 }
